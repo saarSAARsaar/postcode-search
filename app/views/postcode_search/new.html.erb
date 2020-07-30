@@ -1,0 +1,48 @@
+<% if @search.errors.any? %>
+<ul>
+  <% @search.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>   
+  <% end %>
+</ul>   
+<% end %>   
+
+<%= form_for @search, url: postcode_search_index_path, local: true do |form| %>
+ 
+  <p>   
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= form.label :postcode %><br>
+    <%= form.text_field :postcode %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
+
+<%if @results.present?%>
+<h1>Resultate (von <%= @data_length %>) </h1>
+<table>
+  <tr>
+    <th>Postcode</th>
+    <th>Name</th>
+    <th>Canton</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+
+  <% @results.each do |result| %>
+    <tr>
+      <td><%= result[0] %></td>
+      <td><%= result[1] %></td>
+      <td><%= result[2] %></td>
+  <% end %>
+</table>
+<% else %>
+<h1>Did not find any places with those values</h1>
+<% end %>
+
