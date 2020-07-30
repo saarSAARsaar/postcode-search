@@ -3,18 +3,21 @@ class Search
 
     attr_accessor(
         :input,
+        :canton,
         :data_length
     )
-
-    validates :input, presence: true
 
     def results
         @data_length = Place.count
         
-        if /\A\d+\z/.match(@input) 
-            Place.where(postcode: @input)
+        if @input.blank?
+            
+            Place.all
+        elsif /\A\d+\z/.match(@input) 
+            Place.where(postcode: @input, canton: @canton)
         else
-            Place.where("name LIKE ?", "%#{@input}%")
+            Place.where("name LIKE ?", "%#{@input}%").where(canton: @canton)
+            
         end  
     end
 end

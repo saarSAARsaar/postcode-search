@@ -12,6 +12,9 @@
     <%= form.label :input %><br>
     <%= form.text_field :input %>
   </p>
+
+
+  <%= form.select(:canton, options_for_select(@cantons, 'ZH')) %>
  
   <p>
     <%= form.submit %>
@@ -40,4 +43,3 @@
 <% else %>
 <h1>Did not find any places with those values</h1>
 <% end %>
-
