@@ -9,17 +9,12 @@ class Search
     validates :input, presence: true
 
     def results
-        
-        
         @data_length = Place.count
         
-        places = []
         if /\A\d+\z/.match(@input) 
-            places = Place.where(postcode: @input)
+            Place.where(postcode: @input)
         else
-            places = Place.where("name LIKE ?", "%#{@input}%")
+            Place.where("name LIKE ?", "%#{@input}%")
         end  
-
-        places
     end
 end

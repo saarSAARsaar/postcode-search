@@ -1,7 +1,4 @@
 class PostcodeSearchController < ApplicationController
-    def index
-    end
-
     def new
         @search = Search.new
     end
@@ -12,14 +9,13 @@ class PostcodeSearchController < ApplicationController
         if @search.valid?
             @results = @search.results
             @data_length = @search.data_length
-            render 'new'
-        else
-            render 'new'
         end
+        render 'new'
     end
 
     private
-        def postcode_search_params
-            params.require(:search).permit(:input)
-        end
+    
+    def postcode_search_params
+        params.require(:search).permit(:input)
+    end
 end
