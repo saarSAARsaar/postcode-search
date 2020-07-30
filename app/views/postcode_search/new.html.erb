@@ -30,11 +30,11 @@
   </tr>
  
 
-  <% @results.each do |result| %>
+  <% @results.each do |place| %>
     <tr>
-      <td><%= result[0] %></td>
-      <td><%= result[1] %></td>
-      <td><%= result[2] %></td>
+      <td><%= place.postcode %></td>
+      <td><%= place.name %></td>
+      <td><%= place.canton %></td>
   <% end %>
 </table>
 <% else %>
