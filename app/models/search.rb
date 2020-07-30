@@ -4,13 +4,11 @@ class Search
     include ActiveModel::Model
 
     attr_accessor(
-        :postcode,
-        :name,
+        :input,
         :data_length
     )
 
-    validates :postcode, presence: true, unless: :name 
-    validates :name, presence: true, unless: :postcode
+    validates :input, presence: true
 
     def results
         data_path = "/Users/sarthakarora/Downloads/plz_verzeichnis_v2.csv"
@@ -22,16 +20,13 @@ class Search
         
         @data_length = places.length.to_s
         
-        if @postcode.present? && @name.present?
-            wanted_places = places.find_all { |place| place.postcode == @postcode && place.name == @name }
-            return_vals = wanted_places.map { |place| ['', '', place.canton] }
-        elsif @postcode.present?
-            wanted_places = places.find_all { |place| place.postcode == @postcode }
+        if /\A\d+\z/.match(@input) 
+            wanted_places = places.find_all { |place| place.postcode == @input }
             return_vals = wanted_places.map { |place| ['', place.name, place.canton] }
         else
-            wanted_places = places.find_all { |place| place.name == @name }
+            wanted_places = places.find_all { |place| place.name == @input }
             return_vals = wanted_places.map { |place| [place.postcode, '', place.canton] }
-        end
+        end  
 
         return_vals.uniq
         

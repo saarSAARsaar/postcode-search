@@ -9,13 +9,8 @@
 <%= form_for @search, url: postcode_search_index_path, local: true do |form| %>
  
   <p>   
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
- 
-  <p>
-    <%= form.label :postcode %><br>
-    <%= form.text_field :postcode %>
+    <%= form.label :input %><br>
+    <%= form.text_field :input %>
   </p>
  
   <p>

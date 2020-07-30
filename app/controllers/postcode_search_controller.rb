@@ -20,6 +20,6 @@ class PostcodeSearchController < ApplicationController
 
     private
         def postcode_search_params
-            params.require(:search).permit(:name, :postcode)
+            params.require(:search).permit(:input)
         end
 end
