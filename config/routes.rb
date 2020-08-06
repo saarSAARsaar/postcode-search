@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'hub/index'
+  get 'places/:postcode', to: 'places#show', as: 'places'
 
   resources :postcode_search
 

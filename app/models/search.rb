@@ -10,14 +10,18 @@ class Search
     def results
         @data_length = Place.count
         
-        if @input.blank?
-            
-            Place.all
+        if @input.blank? 
+            return Place.all
         elsif /\A\d+\z/.match(@input) 
-            Place.where(postcode: @input, canton: @canton)
+            return_places = Place.where(postcode: @input)
         else
-            Place.where("name LIKE ?", "%#{@input}%").where(canton: @canton)
-            
+            return_places = Place.where("name LIKE ?", "%#{@input}%")
         end  
+
+        if @canton != "All" && @canton
+            return_places = return_places.where(canton: @canton)
+        end
+
+        return_places
     end
 end

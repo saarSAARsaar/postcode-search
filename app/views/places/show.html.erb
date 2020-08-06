@@ -1,0 +1,16 @@
+<p>
+  <strong>Name:</strong>
+  <%= @place.name %>
+</p>
+ 
+<p>
+  <strong>PLZ:</strong>
+  <%= @place.postcode %>
+</p>
+
+<p>
+  <strong>Canton:</strong>
+  <%= @place.canton %>
+</p>
+
+<%= link_to 'Back', postcode_search_index_path %>

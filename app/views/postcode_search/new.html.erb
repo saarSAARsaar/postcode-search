@@ -14,7 +14,7 @@
   </p>
 
 
-  <%= form.select(:canton, options_for_select(@cantons, 'ZH')) %>
+  <%= form.select(:canton, options_for_select(@cantons, @canton ? @canton : 'All')) %>
  
   <p>
     <%= form.submit %>
@@ -32,14 +32,14 @@
     <th colspan="3"></th>
   </tr>
  
-
   <% @results.each do |place| %>
     <tr>
       <td><%= place.postcode %></td>
-      <td><%= place.name %></td>
+      <td><%= highlight(place.name, @input) %></td>
       <td><%= place.canton %></td>
+      <td><%= link_to 'Show', places_path(:postcode => place.postcode) %></td>
   <% end %>
-</table>
+</table> 
 <% else %>
 <h1>Did not find any places with those values</h1>
 <% end %>
