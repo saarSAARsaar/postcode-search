@@ -2,7 +2,7 @@
   <strong>Name:</strong>
   <%= @place.name %>
 </p>
- 
+
 <p>
   <strong>PLZ:</strong>
   <%= @place.postcode %>
@@ -13,4 +13,10 @@
   <%= @place.canton %>
 </p>
 
-<%= link_to 'Back', postcode_search_index_path %>
+<p>
+  <strong>Description:</strong><br>
+  <%= @place.description %>
+</p>
+
+<%= link_to 'Back', new_postcode_search_path %>
+<%= link_to 'Edit', edit_place_path(@place) %> 

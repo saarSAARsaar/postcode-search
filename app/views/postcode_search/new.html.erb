@@ -37,7 +37,7 @@
       <td><%= place.postcode %></td>
       <td><%= highlight(place.name, @input) %></td>
       <td><%= place.canton %></td>
-      <td><%= link_to 'Show', places_path(:postcode => place.postcode) %></td>
+      <td><%= link_to 'Show', places_path(place) %></td>
   <% end %>
 </table> 
 <% else %>
