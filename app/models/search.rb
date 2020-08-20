@@ -11,7 +11,7 @@ class Search
         @data_length = Place.count
         
         if @input.blank? 
-            return Place.all
+            return_places = Place.all
         elsif /\A\d+\z/.match(@input) 
             return_places = Place.where(postcode: @input)
         else

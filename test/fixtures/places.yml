@@ -1,11 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  postcode: MyString
-  canton: MyString
+lausanne:
+  name: Lausanne
+  postcode: 1000
+  canton: AB
 
-two:
-  name: MyString
-  postcode: MyString
-  canton: MyString
+zurich:
+  name: Zurich
+  postcode: 1111
+  canton: RT
+
+kanzu:
+  name: Kanzu
+  postcode: 4233
+  canton: XY
+
+bern:
+  name: Bern
+  postcode: 9999
+  canton: AB
