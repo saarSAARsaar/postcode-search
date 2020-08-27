@@ -25,20 +25,24 @@
 <%if @results.present?%>
 <h1>Resultate (von <%= @data_length %>) </h1>
 <table>
-  <tr>
-    <th>Postcode</th>
-    <th>Name</th>
-    <th>Canton</th>
-    <th colspan="3"></th>
-  </tr>
- 
-  <% @results.each do |place| %>
+  <thead>
     <tr>
-      <td><%= place.postcode %></td>
-      <td><%= highlight(place.name, @input) %></td>
-      <td><%= place.canton %></td>
-      <td><%= link_to 'Show', places_path(place) %></td>
-  <% end %>
+      <th>Postcode</th>
+      <th>Name</th>
+      <th>Canton</th>
+      <th colspan="3"></th>
+    </tr> 
+  </thead>
+ 
+  <tbody>
+    <% @results.each do |place| %>
+      <tr id="place_<%= place.id %>">
+        <td><%= place.postcode %></td>
+        <td><%= highlight(place.name, @input) %></td>
+        <td><%= place.canton %></td>
+        <td><%= link_to 'Show', places_path(place) %></td>
+    <% end %>
+  </tbody>
 </table> 
 <% else %>
 <h1>Did not find any places with those values</h1>
