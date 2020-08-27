@@ -8,7 +8,7 @@ class Search
     )
 
     def results
-        @data_length = Place.count
+        @data_length = 0#Place.count
         
         if @input.blank? 
             return_places = Place.all
