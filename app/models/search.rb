@@ -24,4 +24,4 @@ class Search
 
         return_places
     end
-end
+end                         
