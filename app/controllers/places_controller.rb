@@ -1,4 +1,11 @@
 class PlacesController < ApplicationController
+    def index
+        @search = Search.new
+        @results = @search.results
+        @data_length = @search.data_length
+        @cantons = Place.all.pluck(:canton).uniq.append("All")
+    end
+
     def show
         @place = Place.find(params[:id])
     end 

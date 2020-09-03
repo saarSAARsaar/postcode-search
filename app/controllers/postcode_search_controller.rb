@@ -1,10 +1,4 @@
 class PostcodeSearchController < ApplicationController
-    def new
-        @search = Search.new
-        @results = @search.results
-        @cantons = Place.all.pluck(:canton).uniq.append("All")
-    end
-
     def create
         @search = Search.new(postcode_search_params)
         @cantons = Place.all.pluck(:canton).uniq.append("All")
@@ -16,7 +10,7 @@ class PostcodeSearchController < ApplicationController
         end
         @canton = postcode_search_params[:canton]
 
-        render 'new'
+        render 'places/index', locals: { results: @results, data_length: @data_length }
     end
 
     private
