@@ -10,7 +10,7 @@ class PostcodeSearchController < ApplicationController
         end
         @canton = postcode_search_params[:canton]
 
-        render 'places/index', locals: {results: @results, data_length: @data_length}
+        render 'places/index', locals: { results: @results, data_length: @data_length }
     end
 
     private

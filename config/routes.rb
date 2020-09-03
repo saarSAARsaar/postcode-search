@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  #get 'places/:id', to: 'places#show', as: 'places'
-
   resources :postcode_search, only: [:create]
   resources :places
 

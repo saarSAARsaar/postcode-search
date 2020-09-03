@@ -57,4 +57,5 @@ class PlacesTest < ApplicationSystemTestCase
     click_button "Update Place"
     assert_selector ".description", text: "test"
   end
+  
 end
