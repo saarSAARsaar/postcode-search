@@ -3,7 +3,7 @@ require "application_system_test_case"
 class PlacesTest < ApplicationSystemTestCase
 
   test "user sees list of places when visiting home page" do
-    visit root_path
+    visit root_path 
     assert_selector "#place_#{places(:zurich).id}", text:"Zurich"
   end
 

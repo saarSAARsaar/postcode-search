@@ -1,0 +1,50 @@
+<% if @search.errors.any? %>
+<ul>
+  <% @search.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>   
+  <% end %>
+</ul>   
+<% end %>   
+
+<%= form_for @search, url: postcode_search_index_path, local: true do |form| %>
+ 
+  <p>   
+    <%= form.label :input %><br>
+    <%= form.text_field :input %>
+  </p>
+
+
+  <%= form.select(:canton, options_for_select(@cantons, @canton ? @canton : 'All')) %>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
+
+<%if @results.present?%>
+    <h1>Resultate (von <%= @data_length %>) </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Postcode</th>
+                <th>Name</th>
+                <th>Canton</th>
+                <th colspan="3"></th>
+            </tr> 
+        </thead>
+        
+        <tbody>
+            <% @results.each do |place| %>
+                <tr id="place_<%= place.id %>">
+                    <td><%= place.postcode %></td>
+                    <td><%= highlight(place.name, @input) %></td>
+                    <td><%= place.canton %></td>
+                    <td><%= link_to 'Show', place_path(place) %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table> 
+<% else %>
+    <h1>Did not find any places with those values</h1>
+<% end %>
