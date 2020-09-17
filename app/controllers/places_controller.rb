@@ -26,6 +26,10 @@ class PlacesController < ApplicationController
 
     private
 
+    def get_shark
+        @place = Place.find(params[:place_id])
+    end
+
     def places_params
         params.require(:place).permit(:postcode, :description)
     end
