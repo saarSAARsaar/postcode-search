@@ -7,15 +7,15 @@ class PlacesController < ApplicationController
     end
 
     def show
-        @place = Place.find(params[:id])
+        @place = get_place()
     end 
 
     def edit
-        @place = Place.find(params[:id])
+        @place = get_place()
     end
 
     def update 
-        @place = Place.find(params[:id])
+        @place = get_place()
        
         if @place.update(places_params)
           redirect_to @place
@@ -26,8 +26,8 @@ class PlacesController < ApplicationController
 
     private
 
-    def get_shark
-        @place = Place.find(params[:place_id])
+    def get_place
+        Place.find(params[:id])
     end
 
     def places_params
