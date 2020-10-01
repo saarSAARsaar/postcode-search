@@ -1,7 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+<<<<<<< HEAD
   name: 'Test restaurant name'
   address: 'Test restaurant address'
   place: lausanne  
   
+=======
+  name: MyString
+  address: MyString
+
+two:
+  name: MyString
+  address: MyString
+>>>>>>> 1b818e97dbefb7fc51efc46f6ccb8aa624a2cb90
