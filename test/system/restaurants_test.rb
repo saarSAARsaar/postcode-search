@@ -34,4 +34,4 @@ class RestaurantsTest < ApplicationSystemTestCase
             assert_selector 'td', text: 'test name'
         end
     end
-end
+end 
