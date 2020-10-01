@@ -1,0 +1,18 @@
+
+<%= form_with(model: [ @place, @restaurant ], local: true) do |form|  %>
+
+  <p>   
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>   
+    <%= form.label :address %><br>
+    <%= form.text_field :address %>
+  </p> 
+
+  <p>
+    <%= form.submit 'Save' %>
+  </p>
+ 
+<% end %>

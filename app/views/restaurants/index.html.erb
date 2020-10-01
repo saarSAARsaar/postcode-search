@@ -1,3 +1,5 @@
+<%= flash[:notice] %> 
+
 <h1>Restaurants</h1>
 
 <table>
@@ -5,7 +7,6 @@
         <tr>
             <th>Name</th>
             <th>Address</th>
-            <th colspan="2"></th>
         </tr> 
     </thead>
     
@@ -14,9 +15,14 @@
             <tr id="restaurant_<%= restaurant.id %>">
                 <td><%= restaurant.name %></td>
                 <td><%= restaurant.address %></td>
+                <td><%= link_to 'Edit', edit_place_restaurant_path(@place, restaurant) %></td>
+                <td><%= link_to 'Destroy', place_restaurant_path(@place, restaurant),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
 
 <%= link_to 'Back', place_path(@place) %>
+<%= link_to 'Create Restaurant', new_place_restaurant_path(@place) %>
