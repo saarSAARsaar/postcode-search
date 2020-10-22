@@ -2,7 +2,7 @@ class PlacesController < ApplicationController
 	before_action :set_place, except: %i[index]
 
   def index
-    @search = Search.new
+		@search = Search.new
     @results = @search.results
     @data_length = @search.data_length
     @cantons = Place.all.pluck(:canton).uniq.unshift("All") 
