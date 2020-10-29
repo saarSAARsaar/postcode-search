@@ -1,0 +1,30 @@
+<h1>Restaurants</h1>
+
+<table class="table table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th></th>
+      <th></th>
+    </tr> 
+  </thead>
+
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr id="restaurant_<%= restaurant.id %>">
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
+        <td><%= link_to 'Edit', edit_place_restaurant_path(@place, restaurant) %></td>
+        <td><%= link_to 'Destroy', place_restaurant_path(@place, restaurant),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a href="<%= place_path(@place) %>">
+  <%= image_tag "left-arrow.svg", style: "height: 30px; color: 255, 0, 0" %>
+</a> <br>
+<%= link_to 'Create Restaurant', new_place_restaurant_path(@place), class: "btn btn-primary mt-3" %>

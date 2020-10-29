@@ -10,7 +10,7 @@ class PlacesTest < ApplicationSystemTestCase
   test "search by name" do
     visit root_path
     fill_in 'search[input]', with: 'Z'
-    click_button "Create Search"
+    click_button "Search"
     assert_selector "#place_#{places(:zurich).id}" 
     assert_selector "#place_#{places(:kanzu).id}" 
     within "tbody" do
@@ -21,7 +21,7 @@ class PlacesTest < ApplicationSystemTestCase
   test "search by empty string" do
     visit root_path
     fill_in 'search[input]', with: ''
-    click_button "Create Search"
+    click_button "Search"
     within "tbody" do
       assert_selector "tr", count: Place.count
     end
@@ -30,7 +30,7 @@ class PlacesTest < ApplicationSystemTestCase
   test "filter places based on canton" do
     visit root_path
     select 'AB', from: 'search[canton]'
-    click_button "Create Search"
+    click_button "Search"
     assert_selector "#place_#{places(:bern).id}" 
     assert_selector "#place_#{places(:lausanne).id}" 
     within "tbody" do
@@ -41,7 +41,7 @@ class PlacesTest < ApplicationSystemTestCase
   test "filter places based on canton = all" do
     visit root_path
     select 'All', from: 'search[canton]'
-    click_button "Create Search"
+    click_button "Search"
     within "tbody" do
       assert_selector "tr", count: Place.count
     end
@@ -49,12 +49,12 @@ class PlacesTest < ApplicationSystemTestCase
 
   test "edit description" do
     visit root_path
-    within 'body > table > tbody > tr:nth-child(2)' do
+    within 'table > tbody > tr:nth-child(2)' do
         click_on 'Show'
     end
     click_on 'Edit'
     fill_in("Description", with: "test")
-    click_button "Update Place"
+    click_button "Save"
     assert_selector ".description", text: "test"
   end
   
