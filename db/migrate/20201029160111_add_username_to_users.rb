@@ -1,4 +1,4 @@
-class AddParametersToUsername < ActiveRecord::Migration[6.0]
+class AddUsernameToUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :users do |t|
       t.string :username

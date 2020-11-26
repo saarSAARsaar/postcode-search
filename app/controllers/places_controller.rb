@@ -4,6 +4,7 @@ class PlacesController < ApplicationController
 
   def index
     @username = current_user.username
+    @email = current_user.email
 		@search = Search.new
     @results = @search.results
     @data_length = @search.data_length
