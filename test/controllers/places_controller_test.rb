@@ -1,10 +1,10 @@
 require 'test_helper'
 
 class PlacesControllerTest < ActionDispatch::IntegrationTest
-  test "root path gets shown" do
+  test "places gets shown" do
     user = users(:user1)
     sign_in user
-    get root_path
+    get places_path
     
     assert_response :success
   end
