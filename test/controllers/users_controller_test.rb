@@ -11,10 +11,4 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
     assert :success
   end
-
-  test 'sign in with an existing user without provider' do
-    user = users(:user1)
-    post user_registration_url, params: { email: user.email, password: user.password }
-    assert :success
-  end
 end
