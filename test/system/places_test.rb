@@ -3,11 +3,15 @@ require "application_system_test_case"
 class PlacesTest < ApplicationSystemTestCase
 
   test "user sees list of places when visiting home page" do
+    user = users(:user1)
+    sign_in user
     visit root_path 
     assert_selector "#place_#{places(:zurich).id}", text:"Zurich"
   end
 
   test "search by name" do
+    user = users(:user1)
+    sign_in user
     visit root_path
     fill_in 'search[input]', with: 'Z'
     click_button "Search"
@@ -19,6 +23,8 @@ class PlacesTest < ApplicationSystemTestCase
   end
 
   test "search by empty string" do
+    user = users(:user1)
+    sign_in user
     visit root_path
     fill_in 'search[input]', with: ''
     click_button "Search"
@@ -28,6 +34,8 @@ class PlacesTest < ApplicationSystemTestCase
   end
 
   test "filter places based on canton" do
+    user = users(:user1)
+    sign_in user
     visit root_path
     select 'AB', from: 'search[canton]'
     click_button "Search"
@@ -39,6 +47,8 @@ class PlacesTest < ApplicationSystemTestCase
   end
 
   test "filter places based on canton = all" do
+    user = users(:user1)
+    sign_in user
     visit root_path
     select 'All', from: 'search[canton]'
     click_button "Search"
@@ -48,6 +58,8 @@ class PlacesTest < ApplicationSystemTestCase
   end
 
   test "edit description" do
+    user = users(:user1)
+    sign_in user
     visit root_path
     within 'table > tbody > tr:nth-child(2)' do
         click_on 'Show'
