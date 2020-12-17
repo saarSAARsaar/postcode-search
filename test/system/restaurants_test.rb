@@ -2,6 +2,8 @@ require "application_system_test_case"
 
 class RestaurantsTest < ApplicationSystemTestCase
   test 'display restaurants on place show page' do
+    user = users(:user1)
+    sign_in user
     visit root_path
 
     within 'table > tbody > tr:nth-child(3)' do
@@ -17,6 +19,8 @@ class RestaurantsTest < ApplicationSystemTestCase
   end
 
   test 'newly created restaurant gets shown in the list' do
+    user = users(:user1)
+    sign_in user
     visit root_path
     within 'table > tbody > tr:nth-child(3)' do 
       assert_selector 'td', text: 'Lausanne'

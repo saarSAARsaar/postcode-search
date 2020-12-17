@@ -1,7 +1,10 @@
 class PlacesController < ApplicationController
-	before_action :set_place, except: %i[index]
+  before_action :set_place, except: %i[index]
+  before_action :authenticate_user!
 
   def index
+    @username = current_user.username
+    @email = current_user.email
 		@search = Search.new
     @results = @search.results
     @data_length = @search.data_length

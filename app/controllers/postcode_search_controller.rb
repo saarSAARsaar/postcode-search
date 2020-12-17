@@ -1,5 +1,7 @@
 class PostcodeSearchController < ApplicationController
   def create
+    @username = current_user.username
+    @email = current_user.email
     @search = Search.new(postcode_search_params)
     @cantons = Place.all.pluck(:canton).uniq.append("All")
     
