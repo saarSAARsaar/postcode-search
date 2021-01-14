@@ -5,7 +5,8 @@ class PlacesController < ApplicationController
   def index
     @username = current_user.username
     @email = current_user.email
-		@search = Search.new
+    @search = Search.new
+    @user_mailer = UserMailer.new
     @results = @search.results
     @data_length = @search.data_length
     @cantons = Place.all.pluck(:canton).uniq.unshift("All") 
@@ -18,6 +19,7 @@ class PlacesController < ApplicationController
       render 'edit'
     end
   end
+
 
   private
 
